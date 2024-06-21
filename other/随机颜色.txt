@@ -1,0 +1,9 @@
+//生成随机颜色
+	std::vector<cv::Scalar> color;
+	srand(time(0));
+	for (int i = 0; i < mapping.size(); i++) { //你的类别数量
+		int b = rand() % 256;
+		int g = rand() % 256;
+		int r = rand() % 256;
+		fmt::println("[{},{},{}]",b,g,r);
+	}

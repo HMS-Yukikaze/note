@@ -1,0 +1,2 @@
+# 添加清华源
+conda config --set show_channel_urls yes
