@@ -1,12 +1,10 @@
 
 cmake_minimum_required(VERSION 3.24)
 
-Project(CMakeNote)
+Project(CMakeNote LANGUAGES CXX)
 
-add_subdirectory(CMakeNote unit-test)
+add_subdirectory(singleton)
 
-add_subdirectory(CMakeNote fmt-template)
+add_executable(designed_pattern main.cpp)
 
-add_subdirectory(CMakeNote boost-template)
-
-add_subdirectory(CMakeNote cuda)
+target_link_libraries(designed_pattern PRIVATE singleton)

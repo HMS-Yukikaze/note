@@ -1,7 +1,25 @@
-# note  
-个人开发笔记  
-[Windows](https://github.com/HMS-Yukikaze/note/tree/Windows)   
-[linux](https://github.com/HMS-Yukikaze/note/tree/Linux)    
-[macOS](https://github.com/HMS-Yukikaze/note/tree/macOS)
-[cppLearn]()  
-[designMode]()
+# designed pattern
+# environment
+## debug environment
+- llvm
+- clang
+- lldb
+## debug configuration
+launch.json:
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "c++ lldb",
+            "program": "${workspaceFolder}/build/designed_pattern",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "CMake: Build All"
+        }
+    ]
+}
+```
+1. Singleton pattern
