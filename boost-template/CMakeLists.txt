@@ -3,14 +3,14 @@ cmake_minimum_required(VERSION 3.24)
 project(test)
 cmake_policy(SET CMP0144 NEW)
 #设置boost库搜索路径
-set(BOOST_ROOT /YourPath/Desktop/3rd/boost_1_84_0) 
+set(BOOST_ROOT /Users/hejunfeng/Desktop/3rd/boost_1_84_0) 
 set(Boost_NO_SYSTEM_PATHS ON)
 
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 
-find_package(Boost 
+find_package(Boost REQUIRED
     COMPONENTS    regex
     REQUIRED
 )

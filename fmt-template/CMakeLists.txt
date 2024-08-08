@@ -5,7 +5,7 @@ FetchContent_Declare(fmt
 FetchContent_MakeAvailable(fmt)
 
 add_executable(Test
-  hello_test.cc
+  hello_test.cpp
 )
 
 target_link_libraries(Test 
