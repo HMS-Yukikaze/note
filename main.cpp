@@ -1,5 +1,5 @@
 #include <iostream>
-#include "singleton/1.hpp"
+#include "singleton/singleton.hpp"
 
 struct Rect{
     int x;
