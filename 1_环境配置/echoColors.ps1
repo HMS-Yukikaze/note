@@ -7,8 +7,8 @@ function prompt {
         $curdir = $ExecutionContext.SessionState.Drive.Current.Name+":\"
     }
 
-    Write-Host "🖥️:"$env:COMPUTERNAME" " -BackgroundColor Cyan -ForegroundColor  Red -NoNewline
-    Write-Host "📂:"$curdir" " -BackgroundColor Yellow -ForegroundColor Black -NoNewline
+    Write-Host "🖥️"$env:COMPUTERNAME" " -BackgroundColor Cyan -ForegroundColor  Red -NoNewline
+    Write-Host "📂"$curdir" " -BackgroundColor Yellow -ForegroundColor Black -NoNewline
     Write-Host "⏱️"$time" " -BackgroundColor Magenta -ForegroundColor White
     "🤣👉"
 }
