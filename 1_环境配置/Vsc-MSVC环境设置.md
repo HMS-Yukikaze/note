@@ -20,8 +20,17 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 https://www.cnblogs.com/feipeng8848/p/14306384.html
 
 # vscode + cmake
-
+1. CMake Tools
+2. 设置cmake tools 扩展中的"cmake.cmakePath"
+   eg: ```"cmake.cmakePath":"C:\\Cmake\\bin\\cmake.exe",```
 
 
 
 # vscode+cmake+vcpkg
+1. 安装vcpkg
+2. 安装CMake Tools
+3. 设置cmake tools 扩展中的"cmake.cmakePath"
+    eg:`"cmake.buildArgs": ["-DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"]`
+    ## 经典模式
+
+    ## 清单模式
