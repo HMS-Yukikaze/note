@@ -1,0 +1,49 @@
+cmake_minimum_required(VERSION 3.15)
+
+project(MyCoroutine  LANGUAGES CXX)
+
+set(OPENAPI_MAIN_PROJECT OFF)
+if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+    set(OPENAPI_MAIN_PROJECT ON)
+endif()
+
+option(OPENAPI_BuildExamples  "Build examples"                                      ${OPENAPI_MAIN_PROJECT})
+option(OPENAPI_UseCXXModules  "Use CXX modules"                                      ${OPENAPI_MAIN_PROJECT})
+
+if(NOT WIN32)
+    message(FATAL_ERROR "Only Windows is supported.")
+endif()
+
+include(FetchContent)
+FetchContent_Declare(cppwinrt_nuget
+  URL "https://github.com/microsoft/cppwinrt/releases/download/2.0.240405.15/Microsoft.Windows.CppWinRT.2.0.240405.15.nupkg"
+  URL_HASH "SHA256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+)
+FetchContent_MakeAvailable(cppwinrt_nuget)
+FetchContent_GetProperties(cppwinrt_nuget)
+
+if(NOT cppwinrt_nuget_POPULATED)
+  message(STATUS "Configuring winrt nuget")
+  FetchContent_Populate(cppwinrt_nuget)
+  # install winrt in the bin dir by running the install cmd. This should be optimized/skipped when already installed. TODO:
+  execute_process(
+    COMMAND ${cppwinrt_nuget_SOURCE_DIR}/bin/cppwinrt.exe -in local -output ${cppwinrt_nuget_BINARY_DIR}/include
+    COMMAND_ECHO STDOUT
+    COMMAND_ERROR_IS_FATAL ANY
+  )
+endif()
+
+add_library(cppwinrt INTERFACE)
+#add_subdirectory(utils)
+
+add_executable(MyCoroutine  main.cpp)
+target_include_directories(MyCoroutine  INTERFACE "${cppwinrt_nuget_BINARY_DIR}/include")
+target_link_libraries(MyCoroutine  INTERFACE WindowsApp.lib)
+
+target_compile_features(MyCoroutine  PUBLIC cxx_std_17)
+set_target_properties(MyCoroutine  PROPERTIES CXX_STANDARD 17)
+
+#启用协程支持
+if (MSVC)
+    target_compile_options(MyCoroutine  PRIVATE /await)
+endif()
