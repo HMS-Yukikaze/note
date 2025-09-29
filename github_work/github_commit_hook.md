@@ -1,0 +1,23 @@
+# use clang-format in git by hook
+1. 安装clang-forma(略)
+2. 团队共享 Hook
+
+3. 复制 `pre-commit` 到 `.git/hooks/` 目录
+
+```
+#!/bin/sh
+
+# 检查是否安装了 clang-format
+if ! command -v clang-format >/dev/null 2>&1; then
+    echo "Error: clang-format not found. Install it first."
+    exit 1
+fi
+
+# 使用 clang-format 格式化所有符合条件的文件
+git diff --cached --name-only --diff-filter=ACMRT "*.cpp" "*.h" "*.c" "*.js" "*.cs" | while read -r file; do
+    clang-format -i "$file"
+    git add "$file"
+done
+
+exit 0
+```
