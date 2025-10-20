@@ -1,10 +1,11 @@
 #include <iostream>
 #include <chrono>
+using namespace std;
 using namespace std::chrono_literals;
 
 /*UDL*/
 
-size_t operator""_MB(size_t _sz);
+unsigned long long operator""_MB(unsigned long long _sz);
 
 int main(){
     std::cout<<20_MB<<"\n";
@@ -12,6 +13,6 @@ int main(){
     return 0;
 }
 
-size_t operator""_MB(size_t _sz){
+unsigned long long operator""_MB(unsigned long long _sz){
     return _sz*1024*1024;
 }
