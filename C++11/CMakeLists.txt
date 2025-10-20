@@ -15,5 +15,6 @@ add_subdirectory(feature-3)
 # range-based for loop
 add_subdirectory(feature-4)
 
+add_subdirectory(feature-5)
 
 #add_subdirectory(feature-1)
