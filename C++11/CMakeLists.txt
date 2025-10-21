@@ -17,4 +17,6 @@ add_subdirectory(feature-4)
 
 add_subdirectory(feature-5)
 
+add_subdirectory(feature-6)
+
 #add_subdirectory(feature-1)
