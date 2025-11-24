@@ -18,3 +18,4 @@ FetchContent_MakeAvailable(Boost)
 add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Boost::beast)
+target_compile_definitions(${PROJECT_NAME})
